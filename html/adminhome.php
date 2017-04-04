@@ -28,7 +28,7 @@
 				            <input type="text" onKeyUp="fx(this.value)" autocomplete="off" name="search" id="search" class="textbox" placeholder="Search by College Name/Code" >
 				
 
-							<button type="submit" class="btn btn-primary  btn-lg modify " name="modifysubmit">Modify College Info</button><br>				
+							<button type="submit" id="modifysubmit" class="btn btn-primary  btn-lg modify " name="modifysubmit">Modify College Info</button><br>				
 							<div id="livesearch" class="sirdard" ></div>
 				
 						</div>
