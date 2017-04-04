@@ -17,22 +17,27 @@
 					</div>
 					<div class="container">
 
-                    <form action=../php/addcollege.php method="POST">
+                    
 						 
-                    	<div class="col-md-4">
+                    <div class="col-md-4">
+						<form action=../php/addcollege.php method="POST">					
 							<button type="submit" class="btn btn-primary btn-lg add" name="newsubmit">Add new College</button>
-                        </div>
+						</form> 	
+                    </div>
 
-                        <div class="col-md-8"> 
+					                       	
 
+                    
+                    <div class="col-md-8"> 
+                        <form action=../php/modifycollege.php method="POST">  
 				            <input type="text" onKeyUp="fx(this.value)" autocomplete="off" name="search" id="search" class="textbox" placeholder="Search by College Name/Code" >
 				
 
 							<button type="submit" id="modifysubmit" class="btn btn-primary  btn-lg modify " name="modifysubmit">Modify College Info</button><br>				
 							<div id="livesearch" class="sirdard" ></div>
-				
-						</div>
-					</form>	 
+						</form>	 
+					</div>
+					
 					</div>
 
            		</div>
