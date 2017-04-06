@@ -6,45 +6,22 @@
     android:background="@color/orange">
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/center_id"
-        android:textSize="16sp"
-        android:textColor="@color/black"
-        android:layout_marginLeft="16dp"
-        android:layout_gravity="center"
-        android:textStyle="bold" />
+        style="@style/ListCenters"
+        android:paddingTop="16dp"/>
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/center_name"
-        android:layout_marginLeft="16dp"
-        android:textSize="16sp"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        android:layout_gravity="center"
-        android:layout_below="@id/center_id"/>
+        android:layout_below="@id/center_id"
+        style="@style/ListCenters"/>
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/course_name"
-        android:layout_marginLeft="16dp"
-        android:textSize="16sp"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        android:layout_gravity="center"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@id/center_name"/>
+        android:layout_below="@id/center_name"
+        style="@style/ListCenters"/>
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/rating"
-        android:layout_marginLeft="16dp"
-        android:textSize="16sp"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        android:layout_gravity="center"
-        android:layout_below="@id/course_name" />
+        android:layout_below="@id/course_name"
+        style="@style/ListCenters"
+        android:paddingBottom="16dp"/>
 
 
 </RelativeLayout>

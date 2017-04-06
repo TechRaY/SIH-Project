@@ -24,7 +24,7 @@ import java.nio.charset.Charset;
 import java.util.ArrayList;
 
 public class Result extends AppCompatActivity {
-    public String JSON_URL = "http://192.168.43.56/SIH/JSON_getData.php";
+    public String JSON_URL = "http://192.168.0.3/SIH/JSON_getData.php";
     public String enteredCourseName;
     public ListView listView;
     public String jsonResponse;
@@ -36,6 +36,7 @@ public class Result extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
         enteredCourseName = getIntent().getStringExtra("courseName");
+        Log.d("Result class:", "Result activity created");
         new BackgroundTask().execute();
     }
 
@@ -64,15 +65,19 @@ public class Result extends AppCompatActivity {
         @Override
         protected ArrayList<Center> doInBackground(URL... urls) {
             URL url = createUrl(JSON_URL);
+            Log.d("", url.toString());
             jsonResponse = "";
 
             try {
                 jsonResponse = makeHttpRequest(url);
+                Log.d("", "doInBackground: " + jsonResponse);
             } catch (IOException e) {
                 e.printStackTrace();
             }
 
+            Log.d("", jsonResponse);
             ArrayList<Center> centerList = extractFeatureFromJson(jsonResponse);
+            Log.d("Bakcground Class", "do in background working......"+centerList);
             return centerList;
         }
 

@@ -12,15 +12,17 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="16dp"
         android:id="@+id/searchCourse"
-        android:hint="Search Course.."
-    />
+        android:hint="Search Course.." />
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Search"
         android:id="@+id/searchButton"
         android:onClick="Search"
-        android:layout_below="@id/searchCourse"/>
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="16dp"/>
 
 </RelativeLayout>
