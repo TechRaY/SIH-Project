@@ -1,5 +1,6 @@
 package com.example.anjali.se_project;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -23,7 +24,7 @@ import java.nio.charset.Charset;
 import java.util.ArrayList;
 
 public class Result extends AppCompatActivity {
-    public String JSON_URL = "http://192.168.0.5/SIH/JSON_getData.php";
+    public String JSON_URL = "http://192.168.43.56/SIH/JSON_getData.php";
     public String enteredCourseName;
     public ListView listView;
     public String jsonResponse;
@@ -39,18 +40,18 @@ public class Result extends AppCompatActivity {
     }
 
 
-    private void updateUI(ArrayList<Center> centerList) {
+    private void updateUI(final ArrayList<Center> centerList) {
         CenterAdapter adapter = new CenterAdapter(this, centerList);
         listView = (ListView) findViewById(R.id.list);
         listView.setAdapter(adapter);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-//                Intent newIntent = new Intent(Result.this, CenterDetails.class);
-//                newIntent.putExtra("ITICode", );
-//                newIntent.putExtra("TradeCode", TradeCode);
-//                newIntent.putExtra("jsonString", jsonResponse);
-//                startActivity(newIntent);
+                Intent newIntent = new Intent(Result.this, CenterDetails.class);
+                newIntent.putExtra("ITICode", centerList.get(i).CenterID);
+                newIntent.putExtra("TradeCode", centerList.get(i).TradeCode);
+                newIntent.putExtra("jsonString", jsonResponse);
+                startActivity(newIntent);
             }
 
         });
@@ -163,7 +164,6 @@ public class Result extends AppCompatActivity {
 
 
     }
-
 }
 
 
