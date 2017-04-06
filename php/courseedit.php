@@ -35,35 +35,35 @@
 		  <div class="form-group">
 			<label class="control-label col-sm-2" for="tradecode">Trade Code:</label>
 			<div class="col-sm-3">
-			  <input type="text" class="form-control" id="tradecode">
+			  <input type="text" class="form-control" id="tradecode" name="tradecode">
 			</div>
 		  </div>
 
 		  <div class="form-group">
 			<label class="control-label col-sm-2" for="tradename">Trade Name:</label>
 			<div class="col-sm-3"> 
-			  <input type="text" class="form-control" id="tradename">
+			  <input type="text" class="form-control" id="tradename" name="tradename">
 			</div>
 		  </div>
 
 		  <div class="form-group">
 			<label class="control-label col-sm-2" for="duration">Duration:</label>
 			<div class="col-sm-3"> 
-			  <input type="text" class="form-control" id="duration">
+			  <input type="text" class="form-control" id="duration" name="duration">
 			</div>
 		  </div>
 
 		  <div class="form-group">
 			<label class="control-label col-sm-2" for="shift">Shift:</label>
 			<div class="col-sm-3"> 
-			  <input type="text" class="form-control" id="shift">
+			  <input type="text" class="form-control" id="shift" name="shift">
 			</div>
 		  </div>
 
 		  <div class="form-group">
 			<label class="control-label col-sm-2" for="seatscount">Seats Count:</label>
 			<div class="col-sm-3"> 
-			  <input type="text" class="form-control" id="seatscount">
+			  <input type="text" class="form-control" id="seatscount" name="seatscount">
 			</div>
 		  </div>
 		  
