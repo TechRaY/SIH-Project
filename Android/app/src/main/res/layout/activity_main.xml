@@ -9,12 +9,40 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.anjali.se_project.MainActivity">
+    <TextView
+        android:id="@+id/StateTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="16dp"
+        android:text="Select State"/>
+    <Spinner
+        android:id="@+id/state_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:layout_margin="16dp"
+        android:layout_below="@id/StateTextView"/>
+    <TextView
+        android:id="@+id/DistrictTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="16dp"
+        android:text="Select District"
+        android:layout_below="@id/state_list"/>
+    <Spinner
+        android:id="@+id/district_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:layout_below="@id/DistrictTextView"
+        android:layout_margin="16dp"/>
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:id="@+id/searchCourse"
-        android:hint="Search Course.." />
+        android:hint="Search Course.."
+        android:layout_below="@id/district_list"/>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
