@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -27,9 +28,9 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
     public String courseName;
     public String JSON_URL = "http://192.168.0.4/SIH/JSON_getData.php";
-    public String jsonResponse;
+    public String json_response;
     public Spinner State_Spinner, District_Spinner;
-    public String state;
+    public String selected_state;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +42,23 @@ public class MainActivity extends AppCompatActivity {
         State_Spinner = (Spinner)findViewById(R.id.state_list);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, StateList);
         State_Spinner.setAdapter(adapter);
+
+        State_Spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                selected_state = parentView.getItemAtPosition(position).toString();
+                ArrayList<String> DistrictList = new BackgroundTask().extractFeatureFromJson(json_response, 2);
+                District_Spinner = (Spinner)findViewById(R.id.district_list);
+                ArrayAdapter<String> adapter1 = new ArrayAdapter<>(parentView.getContext(), android.R.layout.simple_spinner_item, DistrictList);
+                District_Spinner.setAdapter(adapter1);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+                // your code here
+            }
+
+        });
     }
 
     private class BackgroundTask extends AsyncTask<Void, Void, ArrayList<String>> {
@@ -49,17 +67,17 @@ public class MainActivity extends AppCompatActivity {
         protected ArrayList<String> doInBackground(Void...voids) {
             URL url = createUrl(JSON_URL);
             Log.d("", url.toString());
-            jsonResponse = "";
+            json_response = "";
 
             try {
-                jsonResponse = makeHttpRequest(url);
-                Log.d("", "doInBackground: " + jsonResponse);
+                json_response = makeHttpRequest(url);
+                Log.d("", "doInBackground: " + json_response);
             } catch (IOException e) {
                 e.printStackTrace();
             }
 
-            Log.d("", jsonResponse);
-            ArrayList<String> StateSpinnerData = extractFeatureFromJson(jsonResponse, 1);
+            Log.d("", json_response);
+            ArrayList<String> StateSpinnerData = extractFeatureFromJson(json_response, 1);
             //Log.d("Bakcground Class", "do in background working......"+centerList);
             return StateSpinnerData;
         }
@@ -144,7 +162,7 @@ public class MainActivity extends AppCompatActivity {
                         int i = 0;
                         while (size-- > 0) {
                             JSONObject row = responsearray.getJSONObject(i++);
-                            if (!districtNameList.contains(row.getString("District")) && state.equals(row.getString("State")))
+                            if (!districtNameList.contains(row.getString("District")) && selected_state.equals(row.getString("State")))
                                 districtNameList.add(row.getString("District"));
                         }
                         return districtNameList;
@@ -166,7 +184,7 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(MainActivity.this, Result.class);
         intent.putExtra("courseName",courseName);
         intent.putExtra("State",state);
-        intent.putExtra("jsonString", jsonResponse);
+        intent.putExtra("jsonString", json_response);
         startActivity(intent);
     }
 }
