@@ -96,6 +96,9 @@ public class Result extends AppCompatActivity {
                     String Rating = row.getString("Institute_Rating");
                     String TradeCode = row.getString("Trade_Code");
                     String State = row.getString("State");
+                    if(enteredCourseName.equals("") && state.equals(State))
+                        centerList.add(new Center(ITICode, ITIName, TradeCode, Rating, TradeCode));
+
                     if (enteredCourseName.equalsIgnoreCase(TradeName) && state.equals(State))
                         centerList.add(new Center(ITICode, ITIName, TradeName, Rating, TradeCode));
 //                    Log.i("CenterList", centerList.get(i).CenterID);
