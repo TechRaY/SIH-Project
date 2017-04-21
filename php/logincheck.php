@@ -1,57 +1,49 @@
 <?php
 
-  if(isset($_POST["loginsubmit"]))
-  {
-	  
- require_once("db.php");
+require_once '../include/user.php';
 
- $username=$_POST["username"]; 
- //$salt=crypt($_POST["pwd"]);
+$username = "";
+$password = "";
 
- $password=$_POST["pwd"];
- 
- echo $username;
- 
- 
- //echo $salt;
- 
- /*                                                                                for entry into database
- $sql="Insert into login values('$username','$salt')";
- 
- $result=mysqli_query($con,$sql);
- 
-  if($result==1)
-  {
-	  echo "success";
-  }
-  else
-  {
-	  echo "shit";
-  }
- 
- */
- 
-  $sql="Select salt from login where username=".$username;
-  $result=mysqli_query($con,$sql);
-  
-  $password = crypt($password, $result["salt"]);
- 
- 
-    if(hash_equals($result["salt"], $password))
-	{
-			echo "hi";
-	}
+
+if(isset($_POST['submit']))
+{
+
+if(isset($_POST['uname'])){
+	$username = $_POST['uname'];
+}
+if(isset($_POST['psw'])){
+    $password = $_POST['psw'];
+}
+
+
+
+$userObject = new User();
+
+
+if(!empty($username) && !empty($password)){
+
+  	$hashed_password = md5($password);
+    $json_array = $userObject->loginUsers($username, $hashed_password);
+
+    if($json_array['success']==1)
+    {
+        header("Location:../html/adminindex.php");
+    }
     else
     {
-		  echo "Incorrect password" ;
-	}
- 
- }
- else
- {
-	 header("Location:../html/404.html");
- }	 
-	 
-	 
+        echo "<script>alert('Invalid Username Or Password');
+        window.location = '../html/login.php';
+        </script>";
+
+    }
+
+}
+
+}
+else{
+  header("Location:../html/login.php");
+}
+
 
 ?>
